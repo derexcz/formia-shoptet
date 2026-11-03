@@ -113,13 +113,20 @@ h1,h2,.h1,.h2,.category-title,.p-detail-inner-header h1,.homepage-group-title,.p
     background:var(--fx-cream)!important; /* stejná barva jako pozadí loga */
     transition:box-shadow .4s var(--fx-ease);
   }
-  .fx-scrolled #header{box-shadow:0 12px 30px -20px rgba(90,57,49,.45)}
+  html.fx-scrolled:not(.fx-checkout) #header{box-shadow:0 12px 30px -20px rgba(90,57,49,.45)}
   #header .header-top-wrapper{height:auto!important;transition:padding .5s var(--fx-ease)}
   #header .site-name{height:auto!important;padding:14px 0 4px!important;transition:padding .5s var(--fx-ease)}
   #header .site-name img{max-height:150px!important;height:auto!important;width:auto}
-  .fx-scrolled #header .site-name{padding:8px 0 0!important}
-  .fx-scrolled #header .site-name img{max-height:58px!important}
+  html.fx-scrolled:not(.fx-checkout) #header .site-name{padding:8px 0 0!important}
+  html.fx-scrolled:not(.fx-checkout) #header .site-name img{max-height:58px!important}
 }
+
+/* košík + objednávka: hlavička normálně odjede, nic nepřekrývá (mapa výdejních míst apod.) */
+@media (min-width:992px){
+  .fx-checkout #header,.ordering-process #header{position:relative!important;top:auto!important;z-index:auto!important;box-shadow:none!important}
+  .fx-checkout #header .site-name img{max-height:150px!important}
+}
+.fx-checkout .fx-progress,.fx-checkout .fx-top,.ordering-process .fx-progress,.ordering-process .fx-top{display:none!important}
 
 /* ---------- Hero / karusel ---------- */
 #carousel .carousel-inner{overflow:hidden}
@@ -267,7 +274,8 @@ h1,h2,.h1,.h2,.category-title,.p-detail-inner-header h1,.homepage-group-title,.p
 
 /* ---------- Kategorie ---------- */
 .category-title{font-size:clamp(32px,4vw,52px)!important;font-weight:500!important;color:var(--fx-brown)}
-.category-perex{color:var(--fx-muted);font-size:17px;line-height:1.7;max-width:760px}
+.category-perex{color:var(--fx-muted);font-size:17px;line-height:1.7;max-width:760px;margin-left:auto!important;margin-right:auto!important;text-align:center!important}
+.category-perex p{text-align:center!important}
 .breadcrumbs,.breadcrumbs-wrapper{background:transparent!important}
 .breadcrumbs a{color:var(--fx-muted)}
 .breadcrumbs a:hover{color:var(--fx-clay-d)}
